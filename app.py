@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   print('Request for index page received')
+   print('Request for index page received Ali Log Ali Log ******************')
    return render_template('index.html')
 
 @app.route('/favicon.ico')
@@ -18,10 +18,10 @@ def hello():
    name = request.form.get('name')
 
    if name:
-       print('Request for hello page received with name=%s' % name)
+       print('Request for hello page received  Ali Log Ali Log ****************** with name=%s' % name)
        return render_template('hello.html', name = name)
    else:
-       print('Request for hello page received with no name or blank name -- redirecting')
+       print('Request for hello page received with no name or blank name -- redirecting  Ali Log Ali Log ****************** ')
        return redirect(url_for('index'))
 
 

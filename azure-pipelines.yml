@@ -5,14 +5,22 @@
 
 trigger:
 - main
-
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
+strategy:
+    matrix:
+      Python27:
+        python.version: '2.7'
+      Python35:
+        python.version: '3.5'
+      Python36:
+        python.version: '3.6'
+      
 
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3.9'
+    versionSpec: '3.9.0'
   displayName: 'Use Python $(python.version)'
 
 - script: |
@@ -25,7 +33,10 @@ steps:
     pytest
   displayName: 'pytest'
 
+
 - script: |
     python -m pip install flake8
     flake8 .
   displayName: 'Run lint tests'
+
+- script: python src/app.py
